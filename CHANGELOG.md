@@ -7,6 +7,12 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-07-14
+
+### Changed
+- upgraded GitHub Actions workflow dependencies to Node 24-compatible action versions
+- kept the CI and release workflow behavior the same while removing Node 20 deprecation noise
+
 ## [0.1.0] - 2026-07-14
 
 ### Added

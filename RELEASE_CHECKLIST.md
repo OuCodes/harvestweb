@@ -144,8 +144,8 @@ Once TestPyPI looks good:
 3. tag the version:
 
 ```bash
-git tag v0.1.0
-git push origin v0.1.0
+git tag v0.1.1
+git push origin v0.1.1
 ```
 
 4. the same `Release` workflow will publish to PyPI automatically on the tag push
@@ -179,5 +179,5 @@ Current package details:
 - import package: `harvestweb`
 - console script: `harvestweb`
 - GitHub repo: `OuCodes/harvestweb`
-- current version: `0.1.0`
+- current version: `0.1.1`
 - release workflow: `.github/workflows/release.yml`

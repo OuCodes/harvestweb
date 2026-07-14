@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "harvestweb"
-version = "0.1.0"
+version = "0.1.1"
 description = "Multi-provider website review and Firecrawl CLI for repo-local research bundles"
 authors = [{name = "OuCodes"}]
 readme = "README.md"
