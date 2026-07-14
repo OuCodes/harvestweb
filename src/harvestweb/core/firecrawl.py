@@ -14,7 +14,7 @@ import requests
 
 FIRECRAWL_API_BASE = "https://api.firecrawl.dev"
 FIRECRAWL_API_VERSION = "v2"
-DEFAULT_OUTPUT_ROOT = Path(os.getenv("WEBHARVEST_OUTPUT_ROOT", "data/webharvest"))
+DEFAULT_OUTPUT_ROOT = Path(os.getenv("HARVESTWEB_OUTPUT_ROOT", "data/harvestweb"))
 
 
 class FirecrawlError(RuntimeError):

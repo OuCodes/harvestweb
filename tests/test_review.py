@@ -4,7 +4,7 @@ import sys
 import types
 from pathlib import Path
 
-from webharvest.core.review import SiteReviewClient, SiteReviewError, render_review_markdown, write_review_bundle
+from harvestweb.core.review import SiteReviewClient, SiteReviewError, render_review_markdown, write_review_bundle
 
 
 class _FakeCrawlMarkdown:

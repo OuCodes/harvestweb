@@ -3,7 +3,7 @@ requires = ["hatchling>=1.29.0"]
 build-backend = "hatchling.build"
 
 [project]
-name = "webharvest"
+name = "harvestweb"
 version = "0.1.0"
 description = "Multi-provider website review and Firecrawl CLI for repo-local research bundles"
 authors = [{name = "OuCodes"}]
@@ -47,10 +47,10 @@ dev = [
 ]
 
 [project.scripts]
-webharvest = "webharvest.cli.main:main"
+harvestweb = "harvestweb.cli.main:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/webharvest"]
+packages = ["src/harvestweb"]

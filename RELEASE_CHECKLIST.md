@@ -1,6 +1,6 @@
 # Release Checklist
 
-This checklist is optimized for `webharvest` using GitHub Actions + trusted publishing.
+This checklist is optimized for `harvestweb` using GitHub Actions + trusted publishing.
 
 ## 1. One-time account setup
 
@@ -22,6 +22,7 @@ Before publishing:
 Repository:
 
 - GitHub repo: `OuCodes/webharvest`
+- package name: `harvestweb`
 - Release workflow file: `.github/workflows/release.yml`
 - TestPyPI environment name: `testpypi`
 - PyPI environment name: `pypi`
@@ -37,10 +38,10 @@ Recommended GitHub setup:
 After creating your TestPyPI account:
 
 1. sign in to TestPyPI
-2. add a **pending publisher** for project `webharvest`
+2. add a **pending publisher** for project `harvestweb`
 3. choose **GitHub Actions** as the publisher type
 4. use these values:
-   - project name: `webharvest`
+   - project name: `harvestweb`
    - owner: `OuCodes`
    - repository name: `webharvest`
    - workflow name: `release.yml`
@@ -53,10 +54,10 @@ This lets the GitHub Actions workflow publish without a long-lived token.
 Repeat the same process on PyPI:
 
 1. sign in to PyPI
-2. add a **pending publisher** for project `webharvest`
+2. add a **pending publisher** for project `harvestweb`
 3. choose **GitHub Actions** as the publisher type
 4. use these values:
-   - project name: `webharvest`
+   - project name: `harvestweb`
    - owner: `OuCodes`
    - repository name: `webharvest`
    - workflow name: `release.yml`
@@ -68,7 +69,7 @@ Do this before the first real release.
 
 ### Product checks
 
-- confirm the package name is still right: `webharvest`
+- confirm the package name is still right: `harvestweb`
 - confirm the version in `pyproject.toml`
 - update `CHANGELOG.md`
 - scan for PII or repo-local residue
@@ -81,14 +82,16 @@ Run:
 ```bash
 ./.venv/bin/python -m pytest
 ./.venv/bin/python -m build
-./.venv/bin/python -m webharvest --help
+./.venv/bin/python -m harvestweb --help
 ```
 
 Optional extra residue scan:
 
-```bash
-rg -n "growthkit|eskiin|/Users/|client_secret|token\.pickle|agent@|mac-field" . --glob '!/.git/**' --glob '!.venv/**'
-```
+- scan for old repo names
+- scan for client names
+- scan for local absolute paths
+- scan for credential filenames and token artifacts
+- scan for operator or machine-specific email addresses
 
 ## 6. First TestPyPI release
 
@@ -118,13 +121,13 @@ After the workflow succeeds:
 3. test install from TestPyPI:
 
 ```bash
-python3 -m venv /tmp/webharvest-test
-/tmp/webharvest-test/bin/python -m pip install --upgrade pip
-/tmp/webharvest-test/bin/python -m pip install \
+python3 -m venv /tmp/harvestweb-test
+/tmp/harvestweb-test/bin/python -m pip install --upgrade pip
+/tmp/harvestweb-test/bin/python -m pip install \
   --index-url https://test.pypi.org/simple/ \
   --extra-index-url https://pypi.org/simple \
-  webharvest
-/tmp/webharvest-test/bin/python -m webharvest --help
+  harvestweb
+/tmp/harvestweb-test/bin/python -m harvestweb --help
 ```
 
 Why `--extra-index-url` matters:
@@ -150,8 +153,8 @@ git push origin v0.1.0
 ## 8. After publishing
 
 - verify the project page on PyPI
-- test `pip install webharvest`
-- test `python -m webharvest --help`
+- test `pip install harvestweb`
+- test `python -m harvestweb --help`
 - create a GitHub Release if you want human-readable release notes
 - move the released notes from `Unreleased` in `CHANGELOG.md` into a versioned section
 
@@ -172,8 +175,9 @@ Common failure points:
 
 Current package details:
 
-- package name: `webharvest`
-- import package: `webharvest`
-- console script: `webharvest`
+- package name: `harvestweb`
+- import package: `harvestweb`
+- console script: `harvestweb`
+- GitHub repo: `OuCodes/webharvest`
 - current version: `0.1.0`
 - release workflow: `.github/workflows/release.yml`

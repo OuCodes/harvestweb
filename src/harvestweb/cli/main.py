@@ -5,7 +5,7 @@ from importlib.metadata import version
 from pathlib import Path
 from typing import Any
 
-from webharvest.core.firecrawl import (
+from harvestweb.core.firecrawl import (
     DEFAULT_OUTPUT_ROOT,
     FirecrawlClient,
     make_output_slug,
@@ -15,7 +15,7 @@ from webharvest.core.firecrawl import (
     render_search_markdown,
     write_output_bundle,
 )
-from webharvest.core.review import (
+from harvestweb.core.review import (
     DEFAULT_PROVIDER_ORDER,
     SiteReviewClient,
     render_review_markdown,
@@ -49,7 +49,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--version",
         action="version",
-        version=f"%(prog)s {version('webharvest')}",
+        version=f"%(prog)s {version('harvestweb')}",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 

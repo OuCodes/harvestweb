@@ -1,25 +1,25 @@
-# webharvest
+# harvestweb
 
-`webharvest` is a small CLI and Python package for website review work.
+`harvestweb` is a small CLI and Python package for website review work.
 
 It gives you one installable tool that can:
 
 - review a site with provider fallbacks
 - call Firecrawl directly for `scrape`, `search`, `map`, and `crawl`
-- save markdown + JSON bundles under a repo-local `data/webharvest/` directory
+- save markdown + JSON bundles under a repo-local `data/harvestweb/` directory
 
 This package is meant to be reusable across client ops repos without dragging along brand-specific code or repo-specific state.
 
 ## Install
 
 ```bash
-pip install webharvest
+pip install harvestweb
 ```
 
 Optional Crawl4AI fallback support:
 
 ```bash
-pip install "webharvest[crawl4ai]"
+pip install "harvestweb[crawl4ai]"
 ```
 
 For local development:
@@ -36,10 +36,10 @@ Hosted Firecrawl requires `FIRECRAWL_API_KEY`:
 
 ```bash
 export FIRECRAWL_API_KEY=fc-your-key
-webharvest review https://example.com --write
-webharvest scrape https://example.com --write
-webharvest map https://example.com --write
-webharvest crawl https://example.com --write
+harvestweb review https://example.com --write
+harvestweb scrape https://example.com --write
+harvestweb map https://example.com --write
+harvestweb crawl https://example.com --write
 ```
 
 ## Commands
@@ -53,18 +53,18 @@ Default provider order:
 3. `requests`
 
 ```bash
-webharvest review https://example.com --write
-webharvest review https://example.com --focus "homepage messaging" --write
-webharvest review https://example.com --provider-order firecrawl,requests --write
+harvestweb review https://example.com --write
+harvestweb review https://example.com --focus "homepage messaging" --write
+harvestweb review https://example.com --provider-order firecrawl,requests --write
 ```
 
 ### Firecrawl commands
 
 ```bash
-webharvest scrape https://example.com --write
-webharvest search "best electrolyte drink" --limit 5 --write
-webharvest map https://example.com --write
-webharvest crawl https://example.com --limit 50 --write
+harvestweb scrape https://example.com --write
+harvestweb search "best electrolyte drink" --limit 5 --write
+harvestweb map https://example.com --write
+harvestweb crawl https://example.com --limit 50 --write
 ```
 
 ## Output
@@ -72,7 +72,7 @@ webharvest crawl https://example.com --limit 50 --write
 By default, bundles are written under:
 
 ```text
-data/webharvest/
+data/harvestweb/
 ```
 
 Subfolders are grouped by kind:
@@ -86,7 +86,7 @@ Subfolders are grouped by kind:
 Override the root with:
 
 - `--output-root ...` on the CLI
-- or `WEBHARVEST_OUTPUT_ROOT=/custom/path`
+- or `HARVESTWEB_OUTPUT_ROOT=/custom/path`
 
 ## Why this package exists
 

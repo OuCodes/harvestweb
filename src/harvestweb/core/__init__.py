@@ -1,4 +1,4 @@
-from webharvest.core.firecrawl import (  # noqa: F401
+from harvestweb.core.firecrawl import (  # noqa: F401
     DEFAULT_OUTPUT_ROOT,
     FirecrawlClient,
     FirecrawlError,
@@ -9,7 +9,7 @@ from webharvest.core.firecrawl import (  # noqa: F401
     render_search_markdown,
     write_output_bundle,
 )
-from webharvest.core.review import (  # noqa: F401
+from harvestweb.core.review import (  # noqa: F401
     DEFAULT_PROVIDER_ORDER,
     SiteReviewClient,
     SiteReviewError,

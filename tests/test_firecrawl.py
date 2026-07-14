@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from webharvest.core.firecrawl import (
+from harvestweb.core.firecrawl import (
     FirecrawlClient,
     render_crawl_markdown,
     render_scrape_markdown,

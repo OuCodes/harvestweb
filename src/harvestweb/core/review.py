@@ -13,7 +13,7 @@ import requests
 from bs4 import BeautifulSoup
 from markitdown import MarkItDown
 
-from webharvest.core.firecrawl import (
+from harvestweb.core.firecrawl import (
     DEFAULT_OUTPUT_ROOT,
     FirecrawlClient,
     FirecrawlError,
