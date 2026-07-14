@@ -21,7 +21,7 @@ Before publishing:
 
 Repository:
 
-- GitHub repo: `OuCodes/webharvest`
+- GitHub repo: `OuCodes/harvestweb`
 - package name: `harvestweb`
 - Release workflow file: `.github/workflows/release.yml`
 - TestPyPI environment name: `testpypi`
@@ -43,7 +43,7 @@ After creating your TestPyPI account:
 4. use these values:
    - project name: `harvestweb`
    - owner: `OuCodes`
-   - repository name: `webharvest`
+   - repository name: `harvestweb`
    - workflow name: `release.yml`
    - environment name: `testpypi`
 
@@ -59,7 +59,7 @@ Repeat the same process on PyPI:
 4. use these values:
    - project name: `harvestweb`
    - owner: `OuCodes`
-   - repository name: `webharvest`
+   - repository name: `harvestweb`
    - workflow name: `release.yml`
    - environment name: `pypi`
 
@@ -178,6 +178,6 @@ Current package details:
 - package name: `harvestweb`
 - import package: `harvestweb`
 - console script: `harvestweb`
-- GitHub repo: `OuCodes/webharvest`
+- GitHub repo: `OuCodes/harvestweb`
 - current version: `0.1.0`
 - release workflow: `.github/workflows/release.yml`

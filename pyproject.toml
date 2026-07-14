@@ -30,10 +30,10 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/OuCodes/webharvest"
-Repository = "https://github.com/OuCodes/webharvest"
-Issues = "https://github.com/OuCodes/webharvest/issues"
-Changelog = "https://github.com/OuCodes/webharvest/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/OuCodes/harvestweb"
+Repository = "https://github.com/OuCodes/harvestweb"
+Issues = "https://github.com/OuCodes/harvestweb/issues"
+Changelog = "https://github.com/OuCodes/harvestweb/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 crawl4ai = [
