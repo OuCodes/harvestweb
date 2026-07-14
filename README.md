@@ -105,3 +105,8 @@ Build distributions:
 ```bash
 ./.venv/bin/python -m build
 ```
+
+## Release docs
+
+- changelog: [`CHANGELOG.md`](./CHANGELOG.md)
+- release checklist: [`RELEASE_CHECKLIST.md`](./RELEASE_CHECKLIST.md)

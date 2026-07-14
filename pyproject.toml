@@ -29,6 +29,12 @@ dependencies = [
     "requests>=2.32",
 ]
 
+[project.urls]
+Homepage = "https://github.com/OuCodes/webharvest"
+Repository = "https://github.com/OuCodes/webharvest"
+Issues = "https://github.com/OuCodes/webharvest/issues"
+Changelog = "https://github.com/OuCodes/webharvest/blob/main/CHANGELOG.md"
+
 [project.optional-dependencies]
 crawl4ai = [
     "crawl4ai>=0.8.6",
