@@ -132,7 +132,9 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def _client_for_args(args: argparse.Namespace) -> FirecrawlClient:
-    return FirecrawlClient(api_key=args.api_key, api_url=args.api_url, timeout_ms=getattr(args, "timeout_ms", 60000))
+    return FirecrawlClient(
+        api_key=args.api_key, api_url=args.api_url, timeout_ms=args.timeout_ms
+    )
 
 
 def _render_and_maybe_write(
