@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+from collections.abc import Callable
 from importlib.metadata import version
 from pathlib import Path
 from typing import Any
@@ -33,7 +34,10 @@ def _csv(values: list[str] | None) -> list[str]:
     return items
 
 
-def _add_common_options(parser: argparse.ArgumentParser) -> None:
+def _configure_subcommand(
+    parser: argparse.ArgumentParser, handler: Callable[[argparse.Namespace], int]
+) -> None:
+    parser.set_defaults(handler=handler)
     parser.add_argument("--api-key", help="Firecrawl API key. Defaults to FIRECRAWL_API_KEY.")
     parser.add_argument("--api-url", help="Firecrawl API base URL. Defaults to FIRECRAWL_API_URL or the hosted API.")
     parser.add_argument(
@@ -57,7 +61,7 @@ def build_parser() -> argparse.ArgumentParser:
         "review",
         help="Review a website with Firecrawl first, then Crawl4AI, then requests.",
     )
-    _add_common_options(review)
+    _configure_subcommand(review, _run_review)
     review.add_argument("url", help="Website URL to review.")
     review.add_argument("--focus", help="Optional review prompt or focus area to include in the report.")
     review.add_argument(
@@ -68,7 +72,7 @@ def build_parser() -> argparse.ArgumentParser:
     review.add_argument("--write", action="store_true", help="Write archive and latest files under the output root.")
 
     scrape = subparsers.add_parser("scrape", help="Scrape a single URL into a readable bundle.")
-    _add_common_options(scrape)
+    _configure_subcommand(scrape, _run_scrape)
     scrape.add_argument("url")
     scrape.add_argument("--format", dest="formats", action="append", default=["markdown"], help="Output format(s), comma-separated.")
     scrape.add_argument("--only-main-content", action=argparse.BooleanOptionalAction, default=True)
@@ -82,7 +86,7 @@ def build_parser() -> argparse.ArgumentParser:
     scrape.add_argument("--write", action="store_true", help="Save archive and latest bundles.")
 
     search = subparsers.add_parser("search", help="Search the web and optionally scrape the results.")
-    _add_common_options(search)
+    _configure_subcommand(search, _run_search)
     search.add_argument("query")
     search.add_argument("--limit", type=int, default=5)
     search.add_argument("--source", dest="sources", action="append", default=["web"], help="Search sources, comma-separated.")
@@ -96,7 +100,7 @@ def build_parser() -> argparse.ArgumentParser:
     search.add_argument("--write", action="store_true", help="Save archive and latest bundles.")
 
     map_parser = subparsers.add_parser("map", help="Discover URLs on a website.")
-    _add_common_options(map_parser)
+    _configure_subcommand(map_parser, _run_map)
     map_parser.add_argument("url")
     map_parser.add_argument("--search")
     map_parser.add_argument("--sitemap", choices=("include", "skip", "only"), default="include")
@@ -107,7 +111,7 @@ def build_parser() -> argparse.ArgumentParser:
     map_parser.add_argument("--write", action="store_true", help="Save archive and latest bundles.")
 
     crawl = subparsers.add_parser("crawl", help="Crawl a site and save the collected pages.")
-    _add_common_options(crawl)
+    _configure_subcommand(crawl, _run_crawl)
     crawl.add_argument("url")
     crawl.add_argument("--prompt")
     crawl.add_argument("--exclude-path", dest="exclude_paths", action="append", default=[])
@@ -294,16 +298,4 @@ def _run_crawl(args: argparse.Namespace) -> int:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-
-    if args.command == "review":
-        return _run_review(args)
-    if args.command == "scrape":
-        return _run_scrape(args)
-    if args.command == "search":
-        return _run_search(args)
-    if args.command == "map":
-        return _run_map(args)
-    if args.command == "crawl":
-        return _run_crawl(args)
-
-    raise SystemExit(f"Unknown command: {args.command}")
+    return args.handler(args)
