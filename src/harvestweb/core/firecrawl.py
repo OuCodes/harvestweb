@@ -295,7 +295,6 @@ class FirecrawlClient:
 
         deadline = time.monotonic() + max_wait_seconds
         status_url = f"crawl/{crawl_id}"
-        status_payload: dict[str, Any] = {}
         while True:
             status_payload = self._request("GET", status_url)
             status = status_payload.get("status")
