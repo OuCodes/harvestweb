@@ -66,10 +66,6 @@ def _request_timeout(timeout_ms: int) -> float:
     return max(timeout_ms / 1000.0, 0.1)
 
 
-def _default_location() -> dict[str, Any]:
-    return {"country": "US", "languages": ["en-US"]}
-
-
 @dataclass(slots=True)
 class FirecrawlClient:
     api_key: str | None = None
